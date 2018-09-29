@@ -36,9 +36,8 @@ def __conn_factory(*args, **kwargs):
 
 
 def get_engine(database="default"):
-    Postgres.DATABASE = database
     return create_engine(
-        pg_cfg(),
+        pg_cfg(database),
         convert_unicode=True,
         connect_args={
             "connect_timeout": Postgres.CONNECTION_TIMEOUT,
