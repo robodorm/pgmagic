@@ -2,6 +2,7 @@ import logging
 import psycopg2
 import psycopg2.extensions
 import psycopg2.extras
+from datetime import datetime
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
