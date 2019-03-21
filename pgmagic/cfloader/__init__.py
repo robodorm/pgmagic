@@ -10,7 +10,7 @@ from sqlalchemy.pool import (NullPool,
 from pgmagic.configurator import Config, provide_config
 
 
-class Postgres(Config):
+class Postgres(metaclass=Config):
     class PoolMapping(enum.Enum):
         NullPool = {"engine": NullPool, "options": {
         }}
