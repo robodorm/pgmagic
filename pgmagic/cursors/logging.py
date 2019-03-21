@@ -1,4 +1,4 @@
-from sqlalchemy.dialects.postgresql import psycopg2
+import psycopg2.extensions
 
 
 class LoggingCursor(psycopg2.extensions.cursor):
