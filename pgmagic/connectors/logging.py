@@ -1,7 +1,11 @@
+import logging
+import psycopg2
+import psycopg2.extensions
 import psycopg2.extras
-from sqlalchemy.dialects.postgresql import psycopg2
 
-from pgmagic import logger
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 from pgmagic.cursors.logging import LoggingCursor
 
 
