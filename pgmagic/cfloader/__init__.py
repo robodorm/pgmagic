@@ -88,7 +88,7 @@ def pg_cfg(database, cfg):
     if not cfg.ENV_PARAMS:
         load_params()
 
-    return cfg.TPL.format(cfg.ENV_PARAMS.get(database))
+    return cfg.TPL.format(**cfg.ENV_PARAMS.get(database))
 
 
 if __name__ == "__main__":
