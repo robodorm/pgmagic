@@ -9,7 +9,7 @@ Postgres connector for sqlalchemy
 ### Installation
 
 ```sh
-$ pip install -e git+https://github.com/lootbox/pgmagic.git#egg=pgmagic --upgrade
+$ pip install -e git+https://github.com/robodorm/pgmagic.git#egg=pgmagic --upgrade
 ```
 
 ### Example usage
