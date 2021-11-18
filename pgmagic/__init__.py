@@ -38,7 +38,6 @@ def __conn_factory(*args, **kwargs):
 def get_engine(database="default"):
     return create_engine(
         pg_cfg(database),
-        convert_unicode=True,
         connect_args={
             "connect_timeout": Postgres.CONNECTION_TIMEOUT,
             "connection_factory": __conn_factory,
@@ -90,7 +89,8 @@ def session(session_name="default"):
         yield new_session
         if not nested_session:
             invalidated = any(
-                isinstance(c, _engine.base.Connection) and c.invalidated for c in _session.transaction._connections)
+                isinstance(c, _engine.base.Connection) and c.invalidated for c in _session.transaction._connections
+            )
             if not invalidated:
                 new_session.commit()
             else:

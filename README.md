@@ -26,15 +26,19 @@ services:
       dockerfile: Dockerfile
     environment:
       # optional, "PG" - already set as a default prefix
+      # Prefix is important, because ALL env vars with that prefix will be
+      # loaded into the configuration
       PGM_PREFIX: PG
-
+      
+      # Define the database with the name "default". Name used in the
+      # configuration to access the database.
       PG_PASSWORD: db_one
       PG_USER: db_one
       PG_DB: db_one
       PG_HOST: db_one
 
-      # all missed parameters
-      # will be set to defaults
+      # Definition of a second database with name "TWO". Name could be any.
+      # All missed parameters will be set to defaults*
       PG_HOST_TWO: db_two
     links:
       - db_one
@@ -53,6 +57,15 @@ services:
       POSTGRES_PASSWORD: db_two
       POSTGRES_USER: db_two
       POSTGRES_DB: db_two
+```
+
+*defaults:
+```
+"PASSWORD": "postgres",
+"USER": "postgres",
+"DB": "postgres",
+"HOST": "postgres",
+"PORT": 5432
 ```
 
 app.py:
