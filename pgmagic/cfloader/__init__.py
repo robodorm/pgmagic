@@ -54,6 +54,7 @@ class Postgres(metaclass=Config):
     DATABASE = None
 
     CONNECTION_TIMEOUT = getenv("PGM_CONNECTION_TIMEOUT", 5)
+    SSL_MODE = getenv("PGM_SSL_MODE")
     POOL = getenv("PGM_POOL", PoolMapping.NullPool.value)
     RO_RECONNECTS = getenv("PGM_RECONNECTS", 3)
     DELIMITER = getenv("PGM_DELIMITER", "_")
@@ -74,6 +75,8 @@ class Postgres(metaclass=Config):
     SCOPED_SESSION = {}
     SESSION_CONTAINER = local()
     TPL = getenv("PGM_TPL", "{SCHEME}://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB}")
+    if SSL_MODE:
+      TPL += f"?sslmode={SSL_MODE}"
     RELOAD = False
 
     def connection_string(self, database):
